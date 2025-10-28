@@ -52,6 +52,7 @@ def concat_user_name(first_name: str, last_name: str, title: str | None = None) 
 
 
 # the default value is mutable, initialize only once, can lead to unexpected behavior
+# Optioal[list[str]] is equivalent to list[str] | None
 def add_item_to_basket(item: str, basket: list[str] | None = None) -> list[str]:
     if basket is None:
         basket = []
