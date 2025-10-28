@@ -1,5 +1,4 @@
 # basic types: int, float, bool, str, list, dict, set, tuple
-from uuid import UUID
 
 
 def summarize(a: int, b: int) -> int:

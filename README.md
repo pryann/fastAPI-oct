@@ -13,3 +13,20 @@
   - nem valódi párhuzamos végrehajtás
   - egy szál van
   - event loop
+
+## HTTP methods
+
+- [https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Methods](https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Methods)
+- GET - adatok lekérése
+- POST - erőforrás létrehozása
+- PUT - update (replace)
+- PATCH - update (partial)
+- DELETE - törlés
+
+## HTTP Status codes
+- [https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Status](https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Status)
+- Informational responses (100 – 199)
+- Successful responses (200 – 299)
+- Redirection messages (300 – 399)
+- Client error responses (400 – 499)
+- Server error responses (500 – 599)
