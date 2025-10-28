@@ -39,3 +39,14 @@
 - PUT: /items/:itemId
 - PATCH: /items/:itemId
 - DELETE: /items/:itemId
+
+## CRUD 
+- Create - POST
+- Read - GET
+- Update - PUT/PATCH
+- Delete - DELETE
+
+# Clean Arhitecture
+- Controller: dummy, csak request reponse
+- Service: Business Logic
+- Repository: persistency (database)
