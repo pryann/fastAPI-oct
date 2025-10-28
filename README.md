@@ -30,3 +30,12 @@
 - Redirection messages (300 – 399)
 - Client error responses (400 – 499)
 - Server error responses (500 – 599)
+
+## REST endpoints
+
+- GET all: /items
+- GET one by id: /items/:itemId
+- POST: /items
+- PUT: /items/:itemId
+- PATCH: /items/:itemId
+- DELETE: /items/:itemId
