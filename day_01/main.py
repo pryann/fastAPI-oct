@@ -1,5 +1,3 @@
-import re
-import stat
 from fastapi import FastAPI, HTTPException
 
 import uvicorn
@@ -35,7 +33,7 @@ async def create_item(item: BaseItem):
     # Item(id=max_id+1, name="Item 4",  quantity=7)
     # incoming JSON -> Pydantic model(Item) -> dictionary (model_dump()) -> unpacking (**) -> Item(...)
 
-    # Incoming JOSN: { name: "Item 4" , quantity: 7} - simply str
+    # Incoming JSON: { name: "Item 4" , quantity: 7} - simply str
     # Incoming JSON -> Pydantic model(BaseItem)
     # Pydantic model(BaseItem) -> dictionary (model_dump())
     # Unpacking (**) -> Item(...)
