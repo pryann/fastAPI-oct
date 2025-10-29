@@ -1,5 +1,7 @@
 from pathlib import Path
-from fastapi import FastAPI, UploadFile
+from fastapi import FastAPI, HTTPException, UploadFile
+from fastapi.responses import FileResponse
+from fastapi.staticfiles import StaticFiles
 import uvicorn
 
 
@@ -7,6 +9,9 @@ app = FastAPI()
 
 # create uploads directory if not exists
 # os.makedirs("uploads", exist_ok=True)
+
+# http://localhost:8000/uploads/FILENAME
+app.mount("/uploads", StaticFiles(directory="uploads"), name="uploads")
 
 
 @app.get("/")
@@ -30,6 +35,19 @@ async def upload_file(file: UploadFile):
         "filename": safe_filename,
         "location": str(file_path),
     }
+
+
+@app.get("/download/{filename}")
+async def download_file(filename: str):
+    file_path = Path("uploads") / filename
+
+    if file_path.exists() and file_path.is_file():
+        return FileResponse(
+            path=file_path,
+            filename=filename,
+            media_type="application/octet-stream",  # force download
+        )
+    raise HTTPException(status_code=404, detail="File not found")
 
 
 if __name__ == "__main__":
