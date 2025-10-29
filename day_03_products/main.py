@@ -1,4 +1,4 @@
-import datetime
+from datetime import datetime
 from typing import Annotated
 from fastapi import FastAPI, HTTPException, Query
 
@@ -7,8 +7,8 @@ import uvicorn
 # absolute imports
 # from day_03_products.models import Product, ProductCreate, ProductUpdate, ProductQuery
 # from day_03_products.database import products, get_next_id
-from .models import Product, ProductCreate, ProductUpdate, ProductQuery
-from .database import products, get_next_id
+from models import Product, ProductCreate, ProductUpdate, ProductQuery
+from database import products, get_next_id
 
 app = FastAPI()
 
@@ -51,7 +51,7 @@ async def create_product(product: ProductCreate):
 async def partial_update_product(product_id: int, product: ProductUpdate):
     for index, existing_product in enumerate(products):
         if existing_product.id == product_id:
-            update_data = product.model_dump()
+            update_data = product.model_dump(exclude_unset=True)
             update_data["updated_at"] = datetime.now()
             products[index] = existing_product.model_copy(update=update_data)
             return products[index]
