@@ -11,8 +11,9 @@ from sqlalchemy.orm import Mapped, mapped_column
 # - pass
 # - terms_accepted: bool
 # - newsletter: bool
-# - created_at: bool
-# - updated_at: bool
+# - created_at: datetime
+# - updated_at: datetime
+
 #   created_at: Mapped[DateTime] = mapped_column(
 #         DateTime, default=func.current_timestamp(), nullable=False
 #     )
