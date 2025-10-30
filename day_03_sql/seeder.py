@@ -1,16 +1,18 @@
-from day_02_products.models import Product
-from day_03_sql.database import Session
+from models import ProductModel
+from database import Base, Session, engine
 
 
 db = Session()
 
+Base.metadata.create_all(bind=engine)
+
 try:
     products = [
-        Product(name="Laptop", price=999.99),
-        Product(name="Monitor", price=88.9),
-        Product(name="VGA", price=1999.5),
-        Product(name="Keyboard", price=199.9),
-        Product(name="Mouse", price=9.9),
+        ProductModel(name="Laptop", price=999.99),
+        ProductModel(name="Monitor", price=88.9),
+        ProductModel(name="VGA", price=1999.5),
+        ProductModel(name="Keyboard", price=199.9),
+        ProductModel(name="Mouse", price=9.9),
     ]
     db.add_all(products)
     db.commit()

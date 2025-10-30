@@ -7,5 +7,5 @@ class ProductModel(Base):
     __tablename__ = "product"
 
     id: Mapped[int] = mapped_column(Integer(), primary_key=True, index=True)
-    name: Mapped[str] = mapped_column(String(50), unique=True, not_nullable=False)
-    price: Mapped[float] = mapped_column(Float(), not_nullable=False)
+    name: Mapped[str] = mapped_column(String(50), unique=True, nullable=False)
+    price: Mapped[float] = mapped_column(Float(), nullable=False)
