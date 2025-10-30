@@ -1,1 +1,4 @@
-# optional, can be used for user-related exceptions in the module
+class NotFoundError(Exception):
+    def __init__(self, message: str = "Resource not found"):
+        self.message = message
+        super().__init__(self.message)
