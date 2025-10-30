@@ -1,10 +1,11 @@
-from sqlalchemy import Float, Integer, String
+from datetime import datetime
+from pydantic import EmailStr
+from sqlalchemy import Boolean, DateTime, Float, Integer, String, func
 from database import Base
 from sqlalchemy.orm import Mapped, mapped_column
 
 # user
 # - id
-# - email
 # - first_name
 # - last_name
 # - email
@@ -26,9 +27,24 @@ from sqlalchemy.orm import Mapped, mapped_column
 # PATCH: first_name, last_name, newsletter
 
 
-class ProductModel(Base):
-    __tablename__ = "product"
+class UserModel(Base):
+    __tablename__ = "users"
 
     id: Mapped[int] = mapped_column(Integer(), primary_key=True, index=True)
-    name: Mapped[str] = mapped_column(String(50), unique=True, nullable=False)
-    price: Mapped[float] = mapped_column(Float(), nullable=False)
+    email: Mapped[str] = mapped_column(
+        String(100), unique=True, nullable=False, index=True
+    )
+    first_name: Mapped[str] = mapped_column(String(50), nullable=False)
+    last_name: Mapped[str] = mapped_column(String(50), nullable=False)
+    password: Mapped[str] = mapped_column(String(255), nullable=False)
+    terms_accepted: Mapped[bool] = mapped_column(Boolean(), nullable=False)
+    newsletter: Mapped[bool] = mapped_column(Boolean(), nullable=False)
+    created_at: Mapped[datetime] = mapped_column(
+        DateTime, server_default=func.current_timestamp(), nullable=False
+    )
+    updated_at: Mapped[datetime] = mapped_column(
+        DateTime,
+        server_default=func.current_timestamp(),
+        onupdate=func.current_timestamp(),
+        nullable=False,
+    )
