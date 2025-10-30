@@ -1,0 +1,1 @@
+# optional, can be used for user-related constants in the module
