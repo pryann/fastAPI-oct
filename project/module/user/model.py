@@ -1,7 +1,7 @@
-# optional, can be used for user-related models in the modulefrom datetime import datetime
+# optional, can be used for user-related models in the module
 from datetime import datetime
 from sqlalchemy import Boolean, DateTime, Integer, String, func
-from database import Base
+from ...database import Base
 from sqlalchemy.orm import Mapped, mapped_column
 
 

@@ -1,5 +1,5 @@
 from fastapi import Depends
-from database import get_session
+from ...database import get_session
 from .repository import AuthRepo
 from .service import AuthService
 from sqlalchemy.orm import Session
